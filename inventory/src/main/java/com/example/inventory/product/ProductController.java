@@ -1,7 +1,5 @@
 package com.example.inventory.product;
 
-import com.example.inventory.customer.Customer;
-import com.example.inventory.customer.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +7,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173") // Change this to the frontend's URL
 @RestController
-@RequestMapping(path = "customers")
+@RequestMapping(path = "products")
 public class ProductController {
     private final ProductRepository productRepository;
 
@@ -18,8 +16,8 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/all-customers")
-    public List<Customer> getProducts() {
+    @GetMapping("/all-products")
+    public List<Product> getProducts() {
         return productRepository.findAll();
     }
 }
