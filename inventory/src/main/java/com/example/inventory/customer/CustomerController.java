@@ -22,7 +22,7 @@ public class CustomerController {
         return customerRepository.findAll();
     }
 
-    @GetMapping("/find-c/{name}")
+    @GetMapping("/find-customer/{name}")
     public ResponseEntity<List<Customer>> getCustomerByName(@PathVariable String name) {
         List<Customer> customers = customerRepository.findByName(name);
         if (customers.isEmpty()) {
@@ -56,5 +56,4 @@ public class CustomerController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }
