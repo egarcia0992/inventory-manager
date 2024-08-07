@@ -1,0 +1,25 @@
+{
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.fontSize": 13,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.preferredLightColorTheme": "Visual Studio Light",
+    "files.autoSave": "afterDelay",
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+    "redhat.telemetry.enabled": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSaveDelay": 2000,
+    "workbench.colorTheme": "Default Dark+",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.accessibilitySupport": "off",
+    "react-native-tools.showUserTips": false,
+    "editor.formatOnSave": true,
+    "prettier.semi": false,
+    "editor.minimap.enabled": false,
+    "prettier.tabWidth": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

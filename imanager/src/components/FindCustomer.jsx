@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Button} from "react-bootstrap";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 function FindCustomer() {
     const [customerName, setCustomerName] = useState(``);
@@ -25,10 +25,11 @@ function FindCustomer() {
 
     return (
         <>
-            <div style={{display: "flex", justifyContent: "center"}}>
-                <form style={{width: "30%"}}>
+            <h1>Find Customer By Name</h1>
+
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <form style={{ width: "30%" }}>
                     <div className="form-group">
-                        <label htmlFor="CustomerName">Name</label>
                         <input
                             type="text"
                             id="CustomerName"
@@ -40,24 +41,24 @@ function FindCustomer() {
                             onChange={(e) => setCustomerName(e.target.value)}
                         />
                     </div>
-                    <Button onClick={handleSubmit} type="submit" className="btn btn-primary btn-lg">
+                    <Button
+                        onClick={handleSubmit}
+                        type="submit"
+                        className="btn btn-primary btn-lg"
+                    >
                         Submit
                     </Button>
                 </form>
             </div>
-            <div style={{justifyContent: "center"}}>
-
+            <div style={{ justifyContent: "center" }}>
                 {customers.map((c, index) => (
-                    <ul style={{listStyleType: "none", margin: 0, padding: 0}} key={index}>
-                        <li>
-                            {c.customerId}
-                        </li>
-                        <li>
-                            {c.customerName}
-                        </li>
-                        <li>
-                            {c.customerEmail}
-                        </li>
+                    <ul
+                        style={{ listStyleType: "none", margin: 0, padding: 0 }}
+                        key={index}
+                    >
+                        <li>{c.customerId}</li>
+                        <li>{c.customerName}</li>
+                        <li>{c.customerEmail}</li>
                     </ul>
                 ))}
             </div>
