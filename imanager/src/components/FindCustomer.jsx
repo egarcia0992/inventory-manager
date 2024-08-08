@@ -41,6 +41,7 @@ function FindCustomer() {
                             onChange={(e) => setCustomerName(e.target.value)}
                         />
                     </div>
+                    <br />
                     <Button
                         onClick={handleSubmit}
                         type="submit"

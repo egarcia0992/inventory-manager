@@ -11,11 +11,13 @@ public class Product {
     private int id;
     private String name;
     private int count;
+    private double price;
 
-    public Product(int id, String name, int count) {
+    public Product(int id, String name, int count, double price) {
         this.id = id;
         this.name = name;
         this.count = count;
+        this.price = price;
     }
 
     @JsonProperty("productId")
@@ -25,6 +27,15 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @JsonProperty("productPrice")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @JsonProperty("productName")

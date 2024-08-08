@@ -2,7 +2,6 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.fontSize": 13,
     "window.autoDetectColorScheme": true,
     "workbench.preferredDarkColorTheme": "Default Dark+",
     "workbench.preferredLightColorTheme": "Visual Studio Light",
@@ -18,7 +17,7 @@
     "editor.accessibilitySupport": "off",
     "react-native-tools.showUserTips": false,
     "editor.formatOnSave": true,
-    "prettier.semi": false,
+    "prettier.semi": true,
     "editor.minimap.enabled": false,
     "prettier.tabWidth": 4,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
