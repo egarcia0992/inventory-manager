@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function UpdateCustomer() {
     const navigate = useNavigate();
@@ -18,11 +18,11 @@ function UpdateCustomer() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({customerId, customerName, customerEmail}),
+            body: JSON.stringify({ customerId, customerName, customerEmail }),
         })
             .then((response) => {
                 if (response.ok) {
-                    alert("Customer updated successfully!");
+                    // alert("Customer updated successfully!");
                     navigate("/customers");
                 } else {
                     alert("Failed to update customer.");
@@ -36,9 +36,8 @@ function UpdateCustomer() {
             <h1>Update Customer</h1>
             <h2>{cust.customerName}</h2>
 
-            <div style={{display: "flex", justifyContent: "center"}}>
-
-                <form style={{width: "30%"}}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <form style={{ width: "30%" }}>
                     <div className="form-group">
                         <label htmlFor="CustomerName">Name</label>
                         <input
@@ -65,8 +64,12 @@ function UpdateCustomer() {
                             onChange={(e) => setCustomerEmail(e.target.value)}
                         />
                     </div>
-                    <br/>
-                    <Button onClick={handleSubmit} type="submit" className="btn btn-primary btn-lg">
+                    <br />
+                    <Button
+                        onClick={handleSubmit}
+                        type="submit"
+                        className="btn btn-primary btn-lg"
+                    >
                         Submit
                     </Button>
                 </form>

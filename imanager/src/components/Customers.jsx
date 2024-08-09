@@ -60,8 +60,7 @@ function Customers() {
                                             })
                                         }
                                     >
-                                        {" "}
-                                        Update{" "}
+                                        Update
                                     </Button>
                                 </td>
                                 <td>

@@ -6,6 +6,7 @@ function DeleteCustomer() {
     const navigate = useNavigate();
     const location = useLocation();
     const cust = location.state.c;
+
     const handleDelete = () => {
         fetch(`http://localhost:8080/customers/${cust.customerId}`, {
             method: "DELETE",
@@ -28,6 +29,7 @@ function DeleteCustomer() {
         <>
             <h1>Are You Sure You Want To Delete The User:</h1>
             <br/>
+            <h2>{cust.customerId}</h2>
             <h2>{cust.customerName}</h2>
             <h2>{cust.customerEmail}</h2>
             <Button onClick={handleDelete}> Delete </Button>
