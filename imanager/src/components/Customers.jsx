@@ -18,6 +18,19 @@ function Customers() {
             );
     }, []);
 
+    const formatDateTime = (dateTimeString) => {
+        const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            // second: "2-digit", //only apply for extra precision
+        };
+        const date = new Date(dateTimeString);
+        return date.toLocaleDateString(undefined, options);
+    };
+
     return (
         <>
             <div>
@@ -41,6 +54,7 @@ function Customers() {
                             <th scope="col">Customer ID</th>
                             <th scope="col">All Customers</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Date Created</th>
                             <th scope="col">Update</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -52,6 +66,7 @@ function Customers() {
                                 <td>{c.customerId}</td>
                                 <td>{c.customerName}</td>
                                 <td>{c.customerEmail}</td>
+                                <td>{formatDateTime(c.createdAt)}</td>
                                 <td>
                                     <Button
                                         onClick={() =>

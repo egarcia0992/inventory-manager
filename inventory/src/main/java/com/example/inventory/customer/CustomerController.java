@@ -56,4 +56,11 @@ public class CustomerController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/add-customer")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer newCustomer) {
+        newCustomer.setCreatedAt(null);
+        Customer savedCustomer = customerRepository.save(newCustomer);
+        return ResponseEntity.ok(savedCustomer);
+    }
 }

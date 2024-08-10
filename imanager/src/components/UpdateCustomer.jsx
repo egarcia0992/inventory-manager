@@ -22,7 +22,7 @@ function UpdateCustomer() {
         })
             .then((response) => {
                 if (response.ok) {
-                    // alert("Customer updated successfully!");
+                    alert("Customer updated successfully!");
                     navigate("/customers");
                 } else {
                     alert("Failed to update customer.");

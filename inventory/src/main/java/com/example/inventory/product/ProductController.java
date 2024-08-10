@@ -47,4 +47,20 @@ public class ProductController {
                 })
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/add-product")
+    public ResponseEntity<Product> createProduct(@RequestBody Product newProduct) {
+        Product savedProduct = productRepository.save(newProduct);
+        return ResponseEntity.ok(savedProduct);
+    }
 }

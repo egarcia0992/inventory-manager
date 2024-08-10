@@ -17,7 +17,7 @@ function DeleteCustomer() {
             .then((response) => {
                 if (response.ok) {
                     alert("Customer deleted successfully!");
-                    navigate("/customers"); // Navigate back to the customers list
+                    navigate("/customers");
                 } else {
                     alert("Failed to delete customer.");
                 }

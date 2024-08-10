@@ -29,15 +29,6 @@ public class Product {
         this.id = id;
     }
 
-    @JsonProperty("productPrice")
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     @JsonProperty("productName")
     public String getName() {
         return name;
@@ -45,6 +36,15 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @JsonProperty("productPrice")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @JsonProperty("productCount")

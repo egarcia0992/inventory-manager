@@ -23,7 +23,7 @@ function UpdateProduct() {
         })
             .then((response) => {
                 if (response.ok) {
-                    // alert("Product updated successfully!");
+                    alert("Product updated successfully!");
                     navigate("/products");
                 } else {
                     alert("Failed to update product.");

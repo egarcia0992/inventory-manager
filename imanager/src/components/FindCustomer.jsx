@@ -23,6 +23,19 @@ function FindCustomer() {
             });
     };
 
+    const formatDateTime = (dateTimeString) => {
+        const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            // second: "2-digit", //only apply for extra precision
+        };
+        const date = new Date(dateTimeString);
+        return date.toLocaleDateString(undefined, options);
+    };
+
     return (
         <>
             <h1>Find Customer By Name</h1>
@@ -57,9 +70,10 @@ function FindCustomer() {
                         style={{ listStyleType: "none", margin: 0, padding: 0 }}
                         key={index}
                     >
-                        <li>{c.customerId}</li>
-                        <li>{c.customerName}</li>
-                        <li>{c.customerEmail}</li>
+                        <li>ID: {c.customerId}</li>
+                        <li>Name: {c.customerName}</li>
+                        <li>Email: {c.customerEmail}</li>
+                        <li>Created On: {formatDateTime(c.createdAt)}</li>
                     </ul>
                 ))}
             </div>

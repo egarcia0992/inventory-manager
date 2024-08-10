@@ -7,6 +7,24 @@ function InsertCustomer() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        fetch("http://localhost:8080/customers/add-customer", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ customerName, customerEmail }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Customer created successfully!");
+                    setCustomerName("");
+                    setCustomerEmail("");
+                } else {
+                    alert("Failed to create customer.");
+                }
+            })
+            .catch(error => console.error("Error creating customer:", error));
     };
 
     return (
