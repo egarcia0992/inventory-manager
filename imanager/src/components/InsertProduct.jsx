@@ -37,7 +37,7 @@ function InsertProduct() {
         const formattedValue = formattedDecimalPart ? 
             `${integerPart}.${formattedDecimalPart}` : 
             integerPart;
-        setProductPrice(formattedValue || "0.00");
+        setProductPrice(formattedValue);
     };
 
     return (
