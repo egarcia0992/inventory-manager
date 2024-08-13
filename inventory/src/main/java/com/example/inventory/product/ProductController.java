@@ -1,5 +1,6 @@
 package com.example.inventory.product;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(
             @PathVariable Long id,
-            @RequestBody Product updatedProduct) {
+            @Valid @RequestBody Product updatedProduct) {
 
         return productRepository.findById(id)
                 .map(product -> {
@@ -59,7 +60,7 @@ public class ProductController {
     }
 
     @PostMapping("/add-product")
-    public ResponseEntity<Product> createProduct(@RequestBody Product newProduct) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product newProduct) {
         Product savedProduct = productRepository.save(newProduct);
         return ResponseEntity.ok(savedProduct);
     }

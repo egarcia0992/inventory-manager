@@ -2,6 +2,8 @@ package com.example.inventory.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "products")
@@ -10,7 +12,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @PositiveOrZero(message = "Count must be zero or a positive integer.")
     private int count;
+    @Min(value = 0, message = "Price must be zero or a positive number.")
     private double price;
 
     public Product(int id, String name, int count, double price) {

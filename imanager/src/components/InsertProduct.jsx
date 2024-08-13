@@ -5,45 +5,89 @@ function InsertProduct() {
     const [productName, setProductName] = useState("");
     const [productCount, setProductCount] = useState("0");
     const [productPrice, setProductPrice] = useState("0.00");
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch("http://localhost:8080/products/add-product", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ productName, productCount, productPrice }),
-        })
-            .then(response => {
-                if (response.ok) {
-                    alert("Product created successfully!");
-                    setProductName("");
-                    setProductCount("0");
-                    setProductPrice("0.00");
-                } else {
-                    alert("Failed to create product.");
-                }
+        if (validateForm()) {
+            fetch("http://localhost:8080/products/add-product", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    productName: productName,
+                    productCount: Number(productCount),
+                    productPrice: Number(productPrice),
+                }),
             })
-            .catch(error => console.error("Error creating product:", error));
+                .then((response) => {
+                    if (response.ok) {
+                        alert("Product created successfully!");
+                        setProductName("");
+                        setProductCount("0");
+                        setProductPrice("0.00");
+                        setErrors({});
+                    } else {
+                        alert("Failed to create product.");
+                    }
+                })
+                .catch((error) =>
+                    console.error("Error creating product:", error)
+                );
+        }
     };
 
     const handlePriceChange = (e) => {
         const value = e.target.value;
-        const numericValue = value.replace(/[^0-9.]/g, "");
-        const [integerPart, decimalPart] = numericValue.split(".");
-        const formattedDecimalPart = (decimalPart || "").slice(0, 2);
-        // Combine integer and decimal parts
-        const formattedValue = formattedDecimalPart ? 
-            `${integerPart}.${formattedDecimalPart}` : 
-            integerPart;
-        setProductPrice(formattedValue);
+        if (/^\d*\.?\d{0,2}$/.test(value)) {
+          setProductPrice(value);
+        }
+      };
+    
+      const handleCountChange = (e) => {
+        const value = e.target.value;
+        if (/^\d*$/.test(value)) {
+          setProductCount(value);
+        }
+      };
+    
+      const preventInvalidKeys = (e) => {
+        if (e.key === "e" || e.key === "E" || e.key === "-" || e.key === "+") {
+          e.preventDefault();
+        }
+      };
+
+    const validateForm = () => {
+        let formErrors = {};
+        let isValid = true;
+
+        if (!productName.trim()) {
+            formErrors.productName = "Product name is required.";
+            isValid = false;
+        }
+        if (
+            !Number.isInteger(Number(productCount)) ||
+            Number(productCount) < 0
+        ) {
+            formErrors.productCount =
+                "Count must be a whole number greater than or equal to 0.";
+            isValid = false;
+        }
+        if (isNaN(productPrice) || Number(productPrice) < 0) {
+            formErrors.productPrice =
+                "Price must be a number greater than or equal to 0.";
+            isValid = false;
+        }
+        setErrors(formErrors);
+        return isValid;
     };
 
     return (
         <>
             <h1>Create New Product</h1>
-
+            <p>{productCount}</p>
+            <p>{productPrice}</p>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <form style={{ width: "30%" }}>
                     <div className="form-group">
@@ -60,7 +104,9 @@ function InsertProduct() {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="ProductCount">Count</label>
+                        <label htmlFor="ProductCount">
+                            Count (Must be whole number)
+                        </label>
                         <input
                             type="number"
                             step="1"
@@ -71,8 +117,12 @@ function InsertProduct() {
                             className="form-control"
                             aria-describedby="productCount"
                             value={productCount}
-                            onChange={(e) => setProductCount(e.target.value)}
+                            onChange={handleCountChange}
+                            onKeyDown={preventInvalidKeys}
                         />
+                        {errors.productCount && (
+                            <p className="error">{errors.productCount}</p>
+                        )}
                     </div>
                     <div className="form-group">
                         <label htmlFor="ProductPrice">Price</label>
@@ -87,7 +137,11 @@ function InsertProduct() {
                             aria-describedby="productPrice"
                             value={productPrice}
                             onChange={handlePriceChange}
+              onKeyDown={preventInvalidKeys}
                         />
+                        {errors.productPrice && (
+                            <p className="error">{errors.productPrice}</p>
+                        )}
                     </div>
                     <br />
                     <Button
