@@ -9,6 +9,7 @@ function InsertProduct() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if (validateForm()) {
             fetch("http://localhost:8080/products/add-product", {
                 method: "POST",
@@ -52,8 +53,26 @@ function InsertProduct() {
         }
     };
 
-    const preventInvalidKeys = (e) => {
-        if (e.key === "e" || e.key === "E" || e.key === "-" || e.key === "+") {
+    const preventInvalidKeysCount = (e) => {
+        const isDigit = e.key >= "0" && e.key <= "9";
+        const isControlKey =
+            e.key === "Backspace" ||
+            e.key === "Delete" ||
+            e.key === "ArrowLeft" ||
+            e.key === "ArrowRight";
+        if (!isDigit && !isControlKey) {
+            e.preventDefault();
+        }
+    };
+    const preventInvalidKeysPrice = (e) => {
+        const isDigit = e.key >= "0" && e.key <= "9";
+        const isControlKey =
+            e.key === "." ||
+            e.key === "Backspace" ||
+            e.key === "Delete" ||
+            e.key === "ArrowLeft" ||
+            e.key === "ArrowRight";
+        if (!isDigit && !isControlKey) {
             e.preventDefault();
         }
     };
@@ -118,7 +137,7 @@ function InsertProduct() {
                             aria-describedby="productCount"
                             value={productCount}
                             onChange={handleCountChange}
-                            onKeyDown={preventInvalidKeys}
+                            onKeyDown={preventInvalidKeysCount}
                         />
                         {errors.productCount && (
                             <p className="error">{errors.productCount}</p>
@@ -137,7 +156,7 @@ function InsertProduct() {
                             aria-describedby="productPrice"
                             value={productPrice}
                             onChange={handlePriceChange}
-                            onKeyDown={preventInvalidKeys}
+                            onKeyDown={preventInvalidKeysPrice}
                         />
                         {errors.productPrice && (
                             <p className="error">{errors.productPrice}</p>
