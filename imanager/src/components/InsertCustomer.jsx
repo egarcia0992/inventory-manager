@@ -15,7 +15,7 @@ function InsertCustomer() {
             },
             body: JSON.stringify({ customerName, customerEmail }),
         })
-            .then(response => {
+            .then((response) => {
                 if (response.ok) {
                     alert("Customer created successfully!");
                     setCustomerName("");
@@ -24,7 +24,7 @@ function InsertCustomer() {
                     alert("Failed to create customer.");
                 }
             })
-            .catch(error => console.error("Error creating customer:", error));
+            .catch((error) => console.error("Error creating customer:", error));
     };
 
     return (

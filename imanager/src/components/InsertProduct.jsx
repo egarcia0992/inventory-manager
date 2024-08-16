@@ -41,22 +41,22 @@ function InsertProduct() {
     const handlePriceChange = (e) => {
         const value = e.target.value;
         if (/^\d*\.?\d{0,2}$/.test(value)) {
-          setProductPrice(value);
+            setProductPrice(value);
         }
-      };
-    
-      const handleCountChange = (e) => {
+    };
+
+    const handleCountChange = (e) => {
         const value = e.target.value;
         if (/^\d*$/.test(value)) {
-          setProductCount(value);
+            setProductCount(value);
         }
-      };
-    
-      const preventInvalidKeys = (e) => {
+    };
+
+    const preventInvalidKeys = (e) => {
         if (e.key === "e" || e.key === "E" || e.key === "-" || e.key === "+") {
-          e.preventDefault();
+            e.preventDefault();
         }
-      };
+    };
 
     const validateForm = () => {
         let formErrors = {};
@@ -137,7 +137,7 @@ function InsertProduct() {
                             aria-describedby="productPrice"
                             value={productPrice}
                             onChange={handlePriceChange}
-              onKeyDown={preventInvalidKeys}
+                            onKeyDown={preventInvalidKeys}
                         />
                         {errors.productPrice && (
                             <p className="error">{errors.productPrice}</p>

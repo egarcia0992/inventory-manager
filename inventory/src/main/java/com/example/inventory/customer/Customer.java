@@ -3,7 +3,6 @@ package com.example.inventory.customer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.Instant;
 
 @Entity
