@@ -39,17 +39,17 @@ function InsertProduct() {
         }
     };
 
-    const handlePriceChange = (e) => {
-        const value = e.target.value;
-        if (/^\d*\.?\d{0,2}$/.test(value)) {
-            setProductPrice(value);
-        }
-    };
-
     const handleCountChange = (e) => {
         const value = e.target.value;
         if (/^\d*$/.test(value)) {
             setProductCount(value);
+        }
+    };
+
+    const handlePriceChange = (e) => {
+        const value = e.target.value;
+        if (/^\d*\.?\d{0,2}$/.test(value)) {
+            setProductPrice(value);
         }
     };
 

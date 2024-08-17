@@ -64,4 +64,9 @@ public class ProductController {
         Product savedProduct = productRepository.save(newProduct);
         return ResponseEntity.ok(savedProduct);
     }
+
+    @GetMapping("/low-count-products")
+    public List<Product> getLowCountProducts() {
+        return productRepository.findFiveLowestCountProducts();
+    }
 }

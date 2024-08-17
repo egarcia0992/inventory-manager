@@ -63,4 +63,9 @@ public class CustomerController {
         Customer savedCustomer = customerRepository.save(newCustomer);
         return ResponseEntity.ok(savedCustomer);
     }
+
+    @GetMapping("/newest-customers")
+    public List<Customer> getNewestCustomers() {
+        return customerRepository.findFiveNewestCustomers();
+    }
 }

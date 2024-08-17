@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Products() {
@@ -35,7 +35,7 @@ function Products() {
                 </Button>
             </div>
             <div style={{ display: "flex" }} className="container">
-                <table className="table table-striped">
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th scope="col">Product ID</th>
@@ -79,7 +79,7 @@ function Products() {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </Table>
             </div>
         </>
     );

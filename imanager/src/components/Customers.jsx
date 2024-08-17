@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Customers() {
@@ -25,7 +25,7 @@ function Customers() {
             day: "numeric",
             hour: "2-digit",
             minute: "2-digit",
-            // second: "2-digit", //only apply for extra precision
+            second: "2-digit", //only apply for extra precision
         };
         const date = new Date(dateTimeString);
         return date.toLocaleDateString(undefined, options);
@@ -48,7 +48,7 @@ function Customers() {
                 </Button>
             </div>
             <div style={{ display: "flex" }} className="container">
-                <table className="table table-striped">
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th scope="col">Customer ID</th>
@@ -92,7 +92,7 @@ function Customers() {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </Table>
             </div>
         </>
     );
