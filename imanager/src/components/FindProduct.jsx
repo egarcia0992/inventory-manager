@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 function FindProduct() {
     const [productName, setProductName] = useState(``);
@@ -51,18 +51,35 @@ function FindProduct() {
                     </Button>
                 </form>
             </div>
-            <div style={{ justifyContent: "center" }}>
-                {products.map((p, index) => (
-                    <ul
-                        style={{ listStyleType: "none", margin: 0, padding: 0 }}
-                        key={index}
-                    >
-                        <li>ID: {p.productId}</li>
-                        <li>Name: {p.productName}</li>
-                        <li>Inventory: {p.productCount}</li>
-                        <li>Price: {p.productPrice}</li>
-                    </ul>
-                ))}
+            <div
+                style={{
+                    justifyContent: "center",
+                    width: "50%",
+                    marginTop: "4vh",
+                }}
+                className="container"
+            >
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Inventory</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {products.map((p, index) => (
+                            <tr key={index}>
+                                <td>{p.productId}</td>
+                                <td>{p.productName}</td>
+                                <td>{p.productCount}</td>
+                                <td>{p.productPrice}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </div>
         </>
     );

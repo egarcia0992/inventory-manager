@@ -105,8 +105,6 @@ function InsertProduct() {
     return (
         <>
             <h1>Create New Product</h1>
-            <p>{productCount}</p>
-            <p>{productPrice}</p>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <form style={{ width: "30%" }}>
                     <div className="form-group">
@@ -124,7 +122,7 @@ function InsertProduct() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="ProductCount">
-                            Count (Must be whole number)
+                            Count
                         </label>
                         <input
                             type="number"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 function FindCustomer() {
     const [customerName, setCustomerName] = useState(``);
@@ -64,18 +64,35 @@ function FindCustomer() {
                     </Button>
                 </form>
             </div>
-            <div style={{ justifyContent: "center" }}>
-                {customers.map((c, index) => (
-                    <ul
-                        style={{ listStyleType: "none", margin: 0, padding: 0 }}
-                        key={index}
-                    >
-                        <li>ID: {c.customerId}</li>
-                        <li>Name: {c.customerName}</li>
-                        <li>Email: {c.customerEmail}</li>
-                        <li>Created On: {formatDateTime(c.createdAt)}</li>
-                    </ul>
-                ))}
+            <div
+                style={{
+                    justifyContent: "center",
+                    width: "50%",
+                    marginTop: "4vh",
+                }}
+                className="container"
+            >
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date Created</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {customers.map((c, index) => (
+                            <tr key={index}>
+                                <td>{c.customerId}</td>
+                                <td>{c.customerName}</td>
+                                <td>{c.customerEmail}</td>
+                                <td>{formatDateTime(c.createdAt)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </div>
         </>
     );
