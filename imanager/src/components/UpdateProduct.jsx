@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 function UpdateProduct() {
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    
     const navigate = useNavigate();
     const location = useLocation();
     const prod = location.state.p;
@@ -14,7 +16,7 @@ function UpdateProduct() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:8080/products/${prod.productId}`, {
+        fetch(`${BASE_URL}/products/${prod.productId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

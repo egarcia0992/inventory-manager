@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 function InsertProduct() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const [productName, setProductName] = useState("");
     const [productCount, setProductCount] = useState("0");
     const [productPrice, setProductPrice] = useState("0.00");
@@ -11,7 +13,7 @@ function InsertProduct() {
         e.preventDefault();
 
         if (validateForm()) {
-            fetch("http://localhost:8080/products/add-product", {
+            fetch(`${BASE_URL}/products/add-product`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -3,12 +3,14 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
 function DeleteCustomer() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const navigate = useNavigate();
     const location = useLocation();
     const cust = location.state.c;
 
     const handleDelete = () => {
-        fetch(`http://localhost:8080/customers/${cust.customerId}`, {
+        fetch(`${BASE_URL}/customers/${cust.customerId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

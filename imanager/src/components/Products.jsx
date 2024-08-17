@@ -3,11 +3,13 @@ import { Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Products() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/products/all-products")
+        fetch(`${BASE_URL}/products/all-products`)
             .then((response) => response.json())
             .then((data) => setProducts(data))
             .catch((error) =>

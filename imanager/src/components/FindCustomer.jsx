@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Table, Button } from "react-bootstrap";
 
 function FindCustomer() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const [customerName, setCustomerName] = useState(``);
     const [customers, setCustomers] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:8080/customers/find-customer/${customerName}`)
+        fetch(`${BASE_URL}/customers/find-customer/${customerName}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();

@@ -3,11 +3,13 @@ import { Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Customers() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const navigate = useNavigate();
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/customers/all-customers")
+        fetch(`${BASE_URL}/customers/all-customers`)
             .then((response) => response.json())
             .then((data) => setCustomers(data))
             .catch((error) =>

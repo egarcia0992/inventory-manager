@@ -3,12 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 function DeleteProduct() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const navigate = useNavigate();
     const location = useLocation();
     const prod = location.state.p;
 
     const handleDelete = () => {
-        fetch(`http://localhost:8080/products/${prod.productId}`, {
+        fetch(`${BASE_URL}/products/${prod.productId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
