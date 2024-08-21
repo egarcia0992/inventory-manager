@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Table, Button } from "react-bootstrap";
 
 function FindProduct() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const [productName, setProductName] = useState(``);
     const [products, setProducts] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:8080/products/find-product/${productName}`)
+        fetch(`${BASE_URL}/products/find-product/${productName}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();

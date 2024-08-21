@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 
 function Home() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     const [customers, setCustomers] = useState([]);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/customers/newest-customers")
+        fetch(`${BASE_URL}/customers/newest-customers`)
             .then((response) => response.json())
             .then((data) => setCustomers(data))
             .catch((error) =>
@@ -17,7 +19,7 @@ function Home() {
             );
     }, []);
     useEffect(() => {
-        fetch("http://localhost:8080/products/low-count-products")
+        fetch(`${BASE_URL}/products/low-count-products`)
             .then((response) => response.json())
             .then((data) => setProducts(data))
             .catch((error) =>
