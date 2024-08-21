@@ -121,9 +121,7 @@ function InsertProduct() {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="ProductCount">
-                            Count
-                        </label>
+                        <label htmlFor="ProductCount">Count</label>
                         <input
                             type="number"
                             step="1"
