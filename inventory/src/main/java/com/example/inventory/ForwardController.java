@@ -10,4 +10,5 @@ public class ForwardController {
     public String forward() {
         return "forward:/index.html";
     }
+
 }
