@@ -36,4 +36,4 @@ build/
 application.properties
 
 #Azure
-.azure
+/.azure/
