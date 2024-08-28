@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "https://app-240820233891-b4aad9dyfcdmgna3.centralus-01.azurewebsites.net") // Change this to the frontend's URL
+//@CrossOrigin(origins = "http://localhost:5173") // Change this to the frontend's URL
 @RestController
 @RequestMapping(path = "customers")
 public class CustomerController {

@@ -47,55 +47,57 @@ function Home() {
         <>
             <h1>Home</h1>
 
-            <div style={{ display: "flex" }} className="container">
-                <div className="container">
-                    <h2>Newest Customers</h2>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Date Created</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {customers.map((c, index) => (
-                                <tr key={index}>
-                                    <td>{c.customerId}</td>
-                                    <td>{c.customerName}</td>
-                                    <td>{c.customerEmail}</td>
-                                    <td>{formatDateTime(c.createdAt)}</td>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-6 col-md-12 mb-4">
+                        <h2>Newest Customers</h2>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Date Created</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </div>
+                            </thead>
 
-                <div className="container">
-                    <h2>Lowest Inventory Products</h2>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Inventory</th>
-                                <th scope="col">Price</th>
-                            </tr>
-                        </thead>
+                            <tbody>
+                                {customers.map((c, index) => (
+                                    <tr key={index}>
+                                        <td>{c.customerId}</td>
+                                        <td>{c.customerName}</td>
+                                        <td>{c.customerEmail}</td>
+                                        <td>{formatDateTime(c.createdAt)}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
 
-                        <tbody>
-                            {products.map((p, index) => (
-                                <tr key={index}>
-                                    <td>{p.productId}</td>
-                                    <td>{p.productName}</td>
-                                    <td>{p.productCount}</td>
-                                    <td>{p.productPrice}</td>
+                    <div className="col-lg-6 col-md-12 mb-4">
+                        <h2>Lowest Inventory Products</h2>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Inventory</th>
+                                    <th scope="col">Price</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+
+                            <tbody>
+                                {products.map((p, index) => (
+                                    <tr key={index}>
+                                        <td>{p.productId}</td>
+                                        <td>{p.productName}</td>
+                                        <td>{p.productCount}</td>
+                                        <td>{p.productPrice}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
             </div>
         </>
